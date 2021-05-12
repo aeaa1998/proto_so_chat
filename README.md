@@ -2,16 +2,16 @@
 
 ## Llenado del Payload
 
-Todos los payloads se les pone esto siempre client -> server.
+Todos los payloads se les pone esto siempre client -> server.<br>
 ``` c++
 payload.set_sender(mi_username)
 payload.set_ip(mi_ip)
 ```
 
 ### Mensaje privado
-Flag -> private_chat
-Extra -> username del que recibe
-Message -> El mensaje
+Flag -> private_chat<br>
+Extra -> username del que recibe<br>
+Message -> El mensaje<br>
 ``` c++
 payload.set_flag(Payload_PayloadFlag::Payload_PayloadFlag_private_chat)
 //El extra se llena con el username del recipient
@@ -21,8 +21,8 @@ payload.set_message(message)
 ```
 
 ### Mensaje general
-Flag -> general_chat
-Message -> El mensaje
+Flag -> general_chat<br>
+Message -> El mensaje<br>
 ``` c++
 payload.set_flag(Payload_PayloadFlag::Payload_PayloadFlag_general_chat)
 payload.set_message(message)
@@ -30,8 +30,8 @@ payload.set_message(message)
 ```
 
 ### Cambio de status
-Flag -> update_status
-Extra -> El status deseado
+Flag -> update_status<br>
+Extra -> El status deseado<br>
 ``` c++
 payload.set_flag(Payload_PayloadFlag::Payload_PayloadFlag_update_status)
 string status = 'INACTIVO'; //PUEDE SER ACITVO, INACTIVO u OCUPADO
@@ -40,8 +40,8 @@ payload.set_extra(status)
 ```
 
 ### Solicitar información de un usuario
-Flag -> user_info
-Extra -> El username del usuario deseado
+Flag -> user_info<br>
+Extra -> El username del usuario deseado<br>
 ``` c++
 payload.set_flag(Payload_PayloadFlag::Payload_PayloadFlag_user_info)
 payload.set_extra(desired_username)
@@ -49,16 +49,16 @@ payload.set_extra(desired_username)
 ```
 
 ### Solicitar lista de usuarios
-Solo necesita saber que se desea la lista de usuarios unicamente se necesita el flag
-Flag -> user_list
+Solo necesita saber que se desea la lista de usuarios unicamente se necesita el flag<br>
+Flag -> user_list<br>
 ``` c++
 payload.set_flag(Payload_PayloadFlag::Payload_PayloadFlag_user_list)
 //Se serializa y se manda al server
 ```
 
 ### Registro
-La ip y el sender siempre van en el codigo del client solo se necesita el flag.
-Flag -> register
+La ip y el sender siempre van en el codigo del client solo se necesita el flag.<br>
+Flag -> register<br>
 ``` c++
 payload.set_flag(Payload_PayloadFlag::Payload_PayloadFlag_register_)
 //Se serializa y se manda al server
@@ -66,7 +66,7 @@ payload.set_flag(Payload_PayloadFlag::Payload_PayloadFlag_register_)
 
 ## Ejemplos
 #### Server
-Ejemplo de como usar el proto para mandar un mensaje privado
+Ejemplo de como usar el proto para mandar un mensaje privado<br>
 ``` c++
     if (payload.flag() == Payload_PayloadFlag::Payload_PayloadFlag_private_chat)
     {
@@ -100,7 +100,7 @@ Ejemplo de como usar el proto para mandar un mensaje privado
 ```
 
 #### Client
-Ejemplo de como recibir e imprimir el payload sin importar de que tipo sea en el client.
+Ejemplo de como recibir e imprimir el payload sin importar de que tipo sea en el client.<br>
 ``` c++
         int received_message = recv(sockfd, message, LENGTH, 0);
         if (received_message > 0)
