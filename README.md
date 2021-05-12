@@ -1,7 +1,7 @@
 # Proto uso
 ## Server
 Ejemplo de como usar el proto para mandar un mensaje privado
-` c++
+``` c++
     if (payload.flag() == Payload_PayloadFlag::Payload_PayloadFlag_private_chat)
     {
         for (int i = 0; i < MAX_CLIENTS; ++i)
@@ -31,11 +31,11 @@ Ejemplo de como usar el proto para mandar un mensaje privado
             }
         }
     }
-`
+```
 
 ## Client
 Ejemplo de como recibir e imprimir el payload sin importar de que tipo sea en el client.
-` c++
+``` c++
         int received_message = recv(sockfd, message, LENGTH, 0);
         if (received_message > 0)
         {
@@ -52,4 +52,4 @@ Ejemplo de como recibir e imprimir el payload sin importar de que tipo sea en el
                 //"Error del server 500 -- El username que ingreso para mandarle un mensaje privado no existe."
             }
         }
-`
+````
