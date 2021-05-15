@@ -80,12 +80,12 @@ Ejemplo de como usar el proto para mandar un mensaje privado<br>
                     //El client ya solo imprime el texto sin tener que pensar que respuesta es
                     //MASK: {sender_username} + (privado): + {mensaje}
                     string message_priv = payload.sender() + " (private): " + payload.message();
-                    Payload payload;
-                    payload.set_sender("server");
-                    payload.set_message(message_priv);
-                    payload.set_code(200);
+                    Payload server_payload;
+                    server_payload.set_sender("server");
+                    server_payload.set_message(message_priv);
+                    server_payload.set_code(200);
                     string out;
-                    payload.SerializeToString(&out);
+                    server_payload.SerializeToString(&out);
                     if (write(clients[i]->socket_d, out.c_str(), out.length()) < 0)
                     {
                         //Aca se mandaria 500 con el mensaje de error solo como ejemplo
