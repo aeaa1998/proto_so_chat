@@ -4,8 +4,16 @@
 
 Todos los payloads se les pone esto siempre client -> server.<br>
 ``` c++
-payload.set_sender(mi_username)
-payload.set_ip(mi_ip)
+payload.set_sender(mi_username);
+payload.set_ip(mi_ip);
+```
+
+Todos los payloads se les pone esto siempre server -> client.<br>
+```c++
+server_payload.set_sender("server");
+server_payload.set_code(200 || 500);
+//Aca metemos la flag original por si el client desea llevar un registro o algo
+server_payload.set_flag(payload.flag());
 ```
 
 ### Mensaje privado
@@ -107,7 +115,8 @@ Ejemplo de como recibir e imprimir el payload sin importar de que tipo sea en el
         {
             Payload server_payload;
             server_payload.ParseFromString(message);
-            if (server_payload.code() == 200)
+            //En caso sea un mensaje general o sea un status code de 200
+            if (server_payload.code() == 200 || server_payload.flag() == Payload_PayloadFlag::Payload_PayloadFlag_general_chat)
             {
                 printf("%s \n", server_payload.message().c_str());
             }
