@@ -11,7 +11,10 @@ payload.set_ip(mi_ip);
 Todos los payloads se les pone esto siempre server -> client.<br>
 ```c++
 server_payload.set_sender("server");
-server_payload.set_code(200 || 500);
+//200 o 500
+int code = 200;
+
+server_payload.set_code(code);
 //Aca metemos la flag original por si el client desea llevar un registro o algo
 server_payload.set_flag(payload.flag());
 ```
